@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type="text/css">
+      .modal-ku {
+  width: 750px;
+  margin: auto;
+}
+  </style>
+</head>
+<body>
+<div class="container">
+
+<div class="card col-sm-6">
+  <div class="card-block">
+
+
+<form action="/bulk_upload" method="POST" enctype="multipart/form-data">
+  <div class="form-group">
+    <label class="col-md-4 control-label">SELECT FILE:</label>
+    <input type="file" name="file" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+  </div>
+  <div class="form-group">
+  <label class="col-md-4 control-label" for="selectbasic">SELECT TYPE</label>
+  <div class="col-md-6">
+    <select id="selectbasic" name="selectbasic" class="form-control">
+      <option value="student">STUDENT</option>
+      <option value="staff">STAFF</option>
+    </select>
+  </div>
+</div>
+<br>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+  <!-- Trigger the modal with a button -->
+  
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">FILE MUST CONTAIN THAT FORMAT ONLY ACEPTS</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+          <div class="table-responsive">
+          <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Aicte_id<th>
+<th>Left_hand<th>
+<th>Name<th>
+<th>Gender<th>
+<th>FatherName<th>
+<th>Add1<th>
+<th>MotherName<th>
+<th>Add2Presnt<th>
+<th>City_Village<th>
+<th>Postal<th>
+<th>Religion<th>
+<th>State<th>
+<th>Caste<th>
+<th>DoB<th>
+<th>PAN<th>
+<th>LandLine<th>
+<th>STD<th>
+<th>Email<th>
+<th>Mobile<th>
+<th>staff_des<th>
+<th>Course<th>
+<th>DA<th>
+<th>Facultytype<th>
+<th>Doj<th>
+<th>Gross<th>
+<th>Basic<th>
+<th>phd<th>
+<th>PG<th>
+<th>PGyear<th>
+<th>UG<th>
+<th>pgins<th>
+<th>pguni<th>
+<th>pgper<th>
+<th>ugins<th>
+<th>uguni<th>
+<th>ugper<th>
+<th>PGcourse<th>
+<th>UGyear<th>
+<th>UGCourse<th>
+<th>Teachingexp<th>
+<th>Bankno<th>
+<th>Bankbranch<th>
+<th>BankName<th>
+<th>IFSC<th>
+<th>photo_location<th>
+<th>degree<th>
+<th>college_id<th>
+      </tr>
+      <tr>
+          <td>CDSPS1193P<td>
+<td>N<td>
+<td>SENTHAMARAI SELVI N<td>
+<td>FEMALE<td>
+<td>NATARAJAN T R<td>
+<td>29/18,THIRUVALLUVAR STREET<td>
+<td>KUMARI N<td>
+<td>BEERAGI MEDU,GINGEE<td>
+<td>VILLUPURAM<td>
+<td>604202.0<td>
+<td>Hindu<td>
+<td>Tamil Nadu<td>
+<td>OBC<td>
+<td>1974-12-03 00:00:00<td>
+<td>CDSPS1193P<td>
+<td>9944857143.0<td>
+<td>nan<td>
+<td>redlotusmiss@gmail.com<td>
+<td>9944857143<td>
+<td>ASSOCIATE PROFESSOR<td>
+<td>CSE<td>
+<td>100.0<td>
+<td>nan<td>
+<td>2011-05-12 00:00:00<td>
+<td>31560.0<td>
+<td>15780.0<td>
+<td>nan<td>
+<td>M.E<td>
+<td>2010.0<td>
+<td>B.E<td>
+<td>SKP Engneering College<td>
+<td>Anna University<td>
+<td>0.84<td>
+<td>Govt.College of Engg,Tirunelveli<td>
+<td>Manonmaniam Sundaranar University<td>
+<td>0.73<td>
+<td>Computer Science and Engineering<td>
+<td>1997<td>
+<td>Computer Science and Engineering<td>
+<td>nan<td>
+<td>13996.0<td>
+<td>VILLUPURAM<td>
+<td>INDIAN OVERSEAS BANK<td>
+<td>IOBA0001278<td>
+<td>nan<td>
+<td>UG Engg.<td>
+<td>1974-12-03 00:00:00<td>
+      </tr>
+      <tr>
+          <td>BFHPP2748K<td>
+<td>N<td>
+<td>PAJANY M<td>
+<td>MALE<td>
+<td>MURUGAIYAN S<td>
+<td>NO:56,SUBRAMANIYAR KOIL STREET,<td>
+<td>NAVANEEDHAM M<td>
+<td>PETHUCHETTIPET,<td>
+<td>LAWSPET POST<td>
+<td>605008.0<td>
+<td>Hindu<td>
+<td>Puducherry<td>
+<td>MBC<td>
+<td>1977-11-07 00:00:00<td>
+<td>BFHPP2748K<td>
+<td>nan<td>
+<td>nan<td>
+<td>pajanyanish@gmail.com<td>
+<td>9486520800<td>
+<td>ASSOCIATE PROFESSOR<td>
+<td>CSE<td>
+<td>nan<td>
+<td>nan<td>
+<td>2010-06-04 00:00:00<td>
+<td>36640.0<td>
+<td>nan<td>
+<td>nan<td>
+<td>M.E<td>
+<td>2009.0<td>
+<td>B.E<td>
+<td>S.K.P. COLLEGE OF ENGINEERING<td>
+<td>ANNA UNIVERSITY<td>
+<td>73.5<td>
+<td>V.R.S. College of Engineering & Tech.<td>
+<td>MADRAS UNIVERSITY<td>
+<td>62.0<td>
+<td>Computer Science & Engineering<td>
+<td>1999<td>
+<td>Computer Science & Engineering<td>
+<td>nan<td>
+<td>12022.0<td>
+<td>VILLUPURAM<td>
+<td>INDIAN OVERSEAS BANK<td>
+<td>IOBA0001278<td>
+<td>nan<td>
+<td>UG Engg.<td>
+<td>105167<td>
+      </tr>
+    </thead>
+    </table>
+    </div>
+    </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+</body>
+</html>

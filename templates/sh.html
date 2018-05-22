@@ -1,0 +1,297 @@
+	<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="../static/img/apple-icon.png" />
+	<link rel="icon" type="image/png" href="../static/img/favicon.png" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Dashboard by infoget Team</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- Bootstrap core CSS     -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!--  Material Dashboard CSS    -->
+    <link href="../static/css/material-dashboard.css" rel="stylesheet"/>
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="../static/css/demo.css" rel="stylesheet" />
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+</head>
+
+<body ng-controller="customersCtrl">
+
+	<div class="wrappe">
+
+	    <div class="sidebar" data-color="purple" data-image="../static/img/sidebar-1.jpg">
+			
+			
+
+	    	<div class="sidebar-wrapper">
+	            <ul class="nav">
+	                <li class="active">
+	                    <a href="/dashboard"  class="btn btn-primary">
+	                        <i class="material-icons">dashboard</i>
+	                        <p>Dashboard</p>
+	                    </a>
+	                </li>
+	                
+					
+	            </ul>
+	    	</div>
+	    </div>
+
+	    <div class="main-panel">
+			<nav class="navbar navbar-transparent navbar-absolute">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">IFET Dashboard</a>
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<a href="/dashboard" >
+									<i class="material-icons">dashboard</i>
+									<p class="hidden-lg hidden-md">Dashboard </p>
+								</a>
+							</li>
+							
+							
+							<li>
+								<a href="/logout" class="dropdown-toggle" data-toggle="dropdown">
+	 							   <i class="fa fa-sign-in"></i>
+	 							   <p class="hidden-lg hidden-md">Profile</p>
+		 						</a>
+							</li>
+						</ul>
+
+						<form class="navbar-form navbar-right" role="search">
+							<div class="form-group  is-empty">
+								<input type="text" class="form-control" placeholder="Search">
+								<span class="material-input"></span>
+							</div>
+							<button type="submit" class="btn btn-white btn-round btn-just-icon">
+								<i class="material-icons">search</i><div class="ripple-container"></div>
+							</button>
+						</form>
+					</div>
+				</div>
+			</nav>
+				      <div class="content">
+	            <div class="container-fluid">
+	                <div class="row">
+
+	                    <div class="col-md-12">
+	                        <div class="card">
+	                            <div class="card-header" data-background-color="purple">
+	                                <h4 class="title">Select Subject Handlers.....</h4>
+									<p class="category"></p>
+	                            </div>
+
+	                             <datalist id="list" type="text" separator=",">
+                                        {% for user in user %}
+                                        <option value="{{user[0]}}"></option>
+
+                                        {% endfor %}
+                                    </datalist>
+                                    <datalist id="list1" type="text" separator=",">
+                                        {% for subject in subject %}
+                                        <option value="{{subject[1]}}"></option>
+
+                                        {% endfor %}
+                                    </datalist>
+
+
+                             <div class="card-content">
+	                            
+	                                
+	                                
+	                                    <div class="row">
+	                                    <!-- <form action="/add_subject_handler" method="POST"> -->
+	                                        <div class="col-md-3">
+												<div class="form-group label-floating">
+													<label class="control-label">Staff Name...</label>
+													<input list="list" class="form-control" name="staff_name" value="" ng-model="staff_name">
+												</div>
+	                                        </div>
+
+	                                         <div class="col-md-3">
+												<div class="form-group label-floating">
+													<label class="control-label">Subject...</label>
+													<input list="list1" class="form-control" name="subject" value="" ng-model="subject">
+												</div>
+	                                        </div>
+	                                        <div class="col-md-3">
+												<div class="form-group label-floating">
+													<label class="control-label">Year...</label>
+													<select ng-model="year"> 
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option  value="3">3</option>
+													<option value="4">4</option>
+														<!-- <input class="form-control" name="subject" value="" > -->
+													</select>
+												</div>
+	                                        </div>
+	                                        <div class="col-md-3">
+												<div class="form-group label-floating">
+													<label class="control-label">Sec...</label>
+													<select ng-model="sec"> 
+													<option value="A">A</option>
+													<option value="B">B</option>
+													<option  value="C">C</option>
+													<!-- <input class="form-control" name="subject" value="" > -->
+													</select>
+												</div>
+	                                        </div>
+	                                        <button type="submit" class="btn btn-primary pull-right" >Submit</button>
+	                                    <div class="clearfix"></div>
+	                                    </form>
+	                                        </div>
+	                                
+	                         </div>
+                                  
+  
+	                       </div>
+	                    </div>
+						
+	                </div>
+
+
+
+ 					<div class="row">
+
+	                    <div class="col-md-13">
+	                        <div class="card">
+	                            <div class="card-header" data-background-color="purple">
+	                                <h4 class="title">Subject Handlers Details.....</h4>
+									<p class="category"></p>
+	                            </div>
+	                            <div class="table-responsive">
+                            
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+
+                                        <tr>
+                                            <th>Subject Name</th><th>Subject Handler</th><th>SEM</th><th>Timestamp</th><th>Sec</th><th>Batch</th><th>Delete</th>
+                                        </tr>
+                                        {% for data in handler %}
+                                        <tr>
+                                        	<td>{{data[1]}}</td><td>{{data[2]}}</td><td>{{data[3]}}</td><td>{{data[5]}}</td><td>{{data[6]}}</td><td>{{data[7]}}</td><td><a href="/subject_handler_delete/{{data[0]}}">X</a></td>
+                                        </tr>
+                                        {% endfor %}
+                                </div>
+	                        </div>
+	                    </div>
+	                 </div>
+
+
+
+
+
+	            </div>
+	        </div>
+					</div>
+				</div>
+				
+		</div>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js">
+</script>
+        <script>
+var uid = 1;
+var app = angular.module('myApp', []);
+   app.controller('customersCtrl', function($scope, $http) {
+
+$scope.add=true;
+$scope.update=true;
+
+$http.get("/subject.json")
+.success(function (data) {
+
+
+  
+    $scope.samp={};
+  $scope.datas = data;
+
+});
+$scope.delete = function(deletingId, index){
+  
+
+$http.get("/subject_delete/" + deletingId)
+    .success(function(data){
+        $scope.datas.splice(index, 1);
+    })
+    alert(data)
+    }
+// $scope.edit = function(id,index) {
+// //search contact with given id and update it
+//                     $scope.add=false;
+//                     $scope.datau = angular.copy($scope.datas[index]);
+//                     alert(datau);
+
+//     }
+$scope.view = function view(id,index) {
+      $scope.names1 = angular.copy($scope.names[index]);
+}
+$scope.update=function update(id,subject_code,subject_name,sem){
+  // alert(Mobile+access_type);
+  var va={"id":id,"subject_code":subject_code,"subject_name":subject_name,"sem":sem};
+  $http.post("/update_subject",va).success(function (res) {
+    $scope.res=res;
+    alert(res);
+  });
+
+}
+$scope.new_add=function new_add(subject_code,subject_name,sem){
+  // alert(Mobile+access_type);
+  var va={"subject_code":subject_code,"subject_name":subject_name,"sem":sem};
+  $http.post("/add_new_subject",va).success(function (res) {
+    $scope.res=res;
+    alert(res);
+  });
+
+}
+
+
+    });
+   app.config(['$interpolateProvider', function($interpolateProvider) {
+  $interpolateProvider.startSymbol('{a');
+  $interpolateProvider.endSymbol('a}');
+}]);
+
+
+</script>
+
+
+</body>
+
+	
+	<script src="../static/js/chartist.min.js"></script>
+
+	
+	<script src="../static/js/bootstrap-notify.js"></script>
+
+	<!--  Google Maps Plugin    -->
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+	<!-- Material Dashboard javascript methods -->
+	<script src="../static/js/material-dashboard.js"></script>
+
+	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+	<script src="../static/js/demo.js"></script>
+
+</html>

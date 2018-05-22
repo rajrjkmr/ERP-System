@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="../static/img/apple-icon.png" />
+	<link rel="icon" type="image/png" href="../static/img/favicon.png" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Dashboard by infoget Team</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- Bootstrap core CSS     -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!--  Material Dashboard CSS    -->
+    <link href="../static/css/material-dashboard.css" rel="stylesheet"/>
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="../static/css/demo.css" rel="stylesheet" />
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+</head>
+<style> 
+input{
+    width: 70px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position:absolute; 
+    padding: 10px 5px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+</style>
+<body ng-app="myApp">
+
+	<div class="wrapper">
+
+	    <div class="sidebar" data-color="purple" data-image="../static/img/sidebar-1.jpg">
+			<!--
+		        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+		        Tip 2: you can also add an image using data-image tag
+		    -->
+
+			<div class="logo">
+				<a href="#" class="simple-text">
+					Infoget Team
+				</a>
+			</div>
+
+	    	<div class="sidebar-wrapper">
+	            <ul class="nav">
+	                 <li >
+	                    <a href="/dashboard"  class="btn btn-primary">
+	                        <i class="material-icons">dashboard</i>
+	                        <p>Dashboard</p>
+	                    </a>
+	                </li>
+	             <li class="active">
+	                    <a href="/add_timetable"  class="btn btn-primary">
+	                        <i class="material-icons"></i>
+	                        <p>ADD timetable</p>
+	                    </a>
+	                </li>
+					
+	            </ul>
+	    	</div>
+	    </div>
+
+	    <div class="main-panel">
+			<nav class="navbar navbar-transparent navbar-absolute">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">IFET Dashboard</a>
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<a href="#/!" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="material-icons">dashboard</i>
+									<p class="hidden-lg hidden-md">Dashboard</p>
+								</a>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="material-icons">notifications</i>
+									<span class="notification">5</span>
+									<p class="hidden-lg hidden-md">Notifications</p>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Mike John responded to your email</a></li>
+									<li><a href="#">You have 5 new tasks</a></li>
+									<li><a href="#">You're now friend with Andrew</a></li>
+									<li><a href="#">Another Notification</a></li>
+									<li><a href="#">Another One</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="/user" class="dropdown-toggle" data-toggle="dropdown">{{data}}
+	 							   <i class="material-icons">person</i>
+	 							   <p class="hidden-lg hidden-md">Profile</p>
+		 						</a>
+							</li>
+							<li>
+								<a href="/logout" class="dropdown-toggle" data-toggle="dropdown">
+	 							   <i class="fa fa-sign-in"></i>
+	 							   <p class="hidden-lg hidden-md">Profile</p>
+		 						</a>
+							</li>
+						</ul>
+
+						<form class="navbar-form navbar-right" role="search">
+							<div class="form-group  is-empty">
+								<input type="text" class="form-control" placeholder="Search">
+								<span class="material-input"></span>
+							</div>
+							<button type="submit" class="btn btn-white btn-round btn-just-icon">
+								<i class="material-icons">search</i><div class="ripple-container"></div>
+							</button>
+						</form>
+					</div>
+				</div>
+			</nav>
+				      <div class="content">
+	            <div class="container-fluid">
+	                <div class="row">
+	                    <div class="col-md-12">
+	                        <div class="card">
+	                            <div class="card-header" data-background-color="purple">
+	                                <h4 class="title">TIME TABLE</h4>
+									<p class="category">Complete the time table</p>
+	                            </div>
+	                            <div class="card-content">
+									
+            <div class="row">
+                <div class="col-md-12">
+          <!--       	{{period}} -->
+                
+                            <div class="table-responsive">
+                            	<form action="/update_timetable" method="POST">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+
+                                    <thead>
+                                        <tr>
+                                            <td align="center"></td>
+                                            <td align="center"><b>9:25-10:15</b></td>
+                                            <td align="center" ><b>10:15-11:05</b></td>
+                                            <td align="center"><b>11:05-11:15</b></td>
+                                            <td align="center"><b>11:15-12:05</b></td>
+                                            <td align="center"><b>12:05-12:55</b></td>
+                                            <td align="center"><b>12:55-1:40</b></td>
+                                            <td align="center"><b>1:40-2:30</b></td>   
+                                            <td align="center"><b>2:30-3:20</b></td>
+                                            <td align="center"><b>3:20-3:30</b></td>
+                                            <td align="center" ><b>3:30-4:20</b></td>
+                                            <td align="center" ><b>4:20-5:05</b></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr class="odd gradeX">
+                                            <td align="center" width="7%">DAY1</td>
+                                            
+                                            <td align="center">{{value[3]}}</td>
+                                            <td align="center">{{value[4]}}</td>
+                                            <td rowspan="6"align="center"><b>B<br>R<br>E<br>A<br>K</b></td>
+                                            <td align="center">{{value[5]}}</td>
+                                            <td align="center">{{value[6]}}</td>
+                                            <td rowspan="6"align="center"><b>L<br>U<br>N<br>C<br>H</b></td>
+                                            <td align="center">{{value[7]}}</td>
+                                            <td align="center">{{value[8]}}</td>
+                                            <td rowspan="6"align="center"><b>B<br>R<br>E<br>A<br>K</b> </td>
+                                            <td align="center">{{value[9]}}</td>
+                                            <td align="center">{{value[10]}}</td>
+                                            
+                                        	
+                                        </tr>
+                                       
+                                        <tr class="even gradeC">
+                                            <td align="center" width="7%">DAY2</td>
+                                            <td align="center">{{value[11]}}</td>
+                                            <td align="center">{{value[12]}}</td>
+                                            <td align="center">{{value[13]}}</td>
+                                            <td align="center">{{value[14]}}</td>
+                                            <td align="center">{{value[15]}}</td>
+                                            <td align="center">{{value[16]}}</td>
+                                            <td align="center">{{value[17]}}</td>
+                                            <td align="center">{{value[18]}}</td>
+                                            
+                                        </tr>
+                                       
+                                        <tr class="even gradeC">
+                                            <td align="center" width="7%">DAY3</td>
+                                            <td align="center">{{value[19]}}</td>
+                                            <td align="center">{{value[20]}}</td>
+                                            <td align="center">{{value[21]}}</td>
+                                            <td align="center">{{value[22]}}</td>
+                                            <td align="center">{{value[23]}}</td>
+                                            <td align="center">{{value[24]}}</td>
+                                            <td align="center">{{value[25]}}</td>
+                                            <td align="center">{{value[26]}}</td>
+                                            
+                                        </tr>
+                                        <tr class="even gradeC">
+                                            <td align="center" width="7%">DAY4</td>
+                                            <td align="center">{{value[27]}}</td>
+                                            <td align="center">{{value[28]}}</td>
+                                            <td align="center">{{value[29]}}</td>
+                                            <td align="center">{{value[30]}}</td>
+                                            <td align="center">{{value[31]}}</td>
+                                            <td align="center">{{value[32]}}</td>
+                                            <td align="center">{{value[33]}}</td>
+                                            <td align="center">{{value[34]}}</td>
+                                            </tr>
+                                       
+                                        <tr class="even gradeC">
+                                            <td align="center" width="7%">DAY5</td>
+                                          	<td align="center">{{value[35]}}</td>
+                                            <td align="center">{{value[36]}}</td>
+                                            <td align="center">{{value[37]}}</td>
+                                            <td align="center">{{value[38]}}</td>
+                                            <td align="center">{{value[39]}}</td>
+                                            <td align="center">{{value[40]}}</td>
+                                            <td align="center">{{value[41]}}</td>
+                                            <td align="center">{{value[42]}}</td>
+                                            
+                                        </tr>
+                                        
+                                        <tr class="even gradeC">
+                                            <td align="center" width="7%">DAY6</td>
+                                      		<td align="center">{{value[43]}}</td>
+                                            <td align="center">{{value[44]}}</td>
+                                            <td align="center">{{value[45]}}</td>
+                                            <td align="center">{{value[46]}}</td>
+                                            <td align="center">{{value[47]}}</td>
+                                            <td align="center">{{value[48]}}</td>
+                                            <td align="center">{{value[49]}}</td>
+                                            <td align="center">{{value[50]}}</td>
+                                             
+                                        </tr>
+                                      
+                                    </tbody>
+                                </table>
+                                <button class="btn btn-primary ">upadate</button>
+                            </form>
+                            </div>
+                            
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+            
+  </form>
+
+    
+   
+
+
+
+
+
+ 						 </div>
+
+			
+	                      
+
+						</div>
+					</div>
+				</div>
+				<script>
+				var app = angular.module("myApp", ["ngRoute"]);
+				app.config(function($routeProvider) {
+				    $routeProvider
+				    .when("/", {
+				        templateUrl : "/main"
+				    })
+				    .when("/user", {
+				        templateUrl : "/user"
+				    })
+				    .when("/table", {
+				        templateUrl : "#"
+				    })
+				    .when("/blue", {
+				        templateUrl : "blue.htm"
+				    });
+				});
+				</script>
+			</div>
+
+			<footer class="footer">
+				<div class="container-fluid">
+					<nav class="pull-left">
+						<ul>
+							<li>
+								<a href="#">
+									Home
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									Company
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									Portfolio
+								</a>
+							</li>
+							<li>
+								<a href="#">
+								   Blog
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<p class="copyright pull-right">
+						&copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+					</p>
+				</div>
+			</footer>
+		</div>
+	</div>
+
+</body>
+
+	<!--   Core JS Files   -->
+	<script src="../static/js/jquery-3.1.0.min.js" type="text/javascript"></script>
+	<script src="../static/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../static/js/material.min.js" type="text/javascript"></script>
+
+	<!--  Charts Plugin -->
+	<script src="../static/js/chartist.min.js"></script>
+
+	<!--  Notifications Plugin    -->
+	<script src="../static/js/bootstrap-notify.js"></script>
+
+	<!--  Google Maps Plugin    -->
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+	<!-- Material Dashboard javascript methods -->
+	<script src="../static/js/material-dashboard.js"></script>
+
+	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+	<script src="../static/js/demo.js"></script>
+
+	<script type="text/javascript">
+    	$(document).ready(function(){
+
+			// Javascript method's body can be found in static/js/demos.js
+        	demo.initDashboardPageCharts();
+
+    	});
+	</script>
+
+</html>

@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+	<!--     Fonts and icons     -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+	<!-- CSS Files -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../static/css/material-kit.css" rel="stylesheet"/>
+<link rel="stylesheet" href="../static/css/material.indigo-pink.min.css">
+</head>
+
+<body style="background-color: #fff" ng-controller='customersCtrl'>
+<!-- Button trigger modal -->
+
+
+<!-- Modal Core -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width: 100%!important;margin: 0px;">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #7986cb;color: #fff;">
+        <button style="color: #fff;" ng-click="reload()" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"><i data-dismiss="modal" ng-click="reload()" aria-hidden="true" class="material-icons">arrow_back</i> Details</h4>
+      </div>
+      <div class="modal-body">
+       <table style="width: 100%">
+       	<style type="text/css">
+       		.right{text-align: right!important;}
+       		hr{background-color: #ba68c8;}
+       		h5{color: #ee6e73;}
+       	</style>
+    <tbody>
+        <tr>
+            <td><img width="60" height="60" src="static/img/test.jpg"></td>
+            <td><span style="font-weight: bold;">{a names1.Name a}</span><br><font style="font-size: 12px">{a names1.regist a}<br>{a names1.dept a}</font></td>
+            <td class="right"><font style="font-size: 10px;">{a names1.dep_semester a}</font><br><font style="font-size: 10px;">{a names1.aca_year a}</font></td>
+        </tr>
+    </tbody>
+</table>
+<!-- tabs start -->
+  <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+  <div class="mdl-tabs__tab-bar">
+  	<style type="text/css">.mdl-tabs__tab{width: 34%!important;text-decoration: none!important;margin-left: -8px!important;}
+  	@media (max-width: 768px){
+  		.mtab{text-align: center;}
+
+  	}
+  	@media (min-width: 768px) and (max-width: 1441px){
+  		.mtab{width: 100%!important;text-align: center;}
+
+  	}
+  	.mtab>tr{border: 2px solid #ddd!important;}
+  </style>
+      <a href="#info" class="mdl-tabs__tab is-active">INFO</a>
+      <a style="" href="#attnd" class="mdl-tabs__tab">ATTND</a>
+      <a href="#tests" class="mdl-tabs__tab">TESTS</a>
+      <a href="#univ" class="mdl-tabs__tab">UNIV</a>
+  </div>
+  <div class="mdl-tabs__panel is-active" id="info"><p></p>
+  	
+<table class="mtab" style="width: 100%"><tr><th style="background-color: #8bc34a;color: #fff;text-align: center;">Attedence(%)</th><th style="text-align: center;background-color: #ce93d8;color: #fff">Total C.G.P.A</th><th style="text-align: center;background-color: #ff8a80;color: #fff">Total Arrears</th><th style="background-color: #90caf9;text-align: center;color: #fff">History of Arrears</th></tr><tr><td style="background-color: #dcedc8;">79.5</td><td style="background-color: #f3e5f5;">7.5</td><td style="background-color: #ffcdd2;">-</td><td style="background-color: #e3f2fd;">-</td></tr></table>
+<h5>Personal Details</h5><hr>
+    <table style="width: 100%;" cellpadding="5">
+      <tr><th style="text-align: left;width: 10px;padding: 3px;font-size: 10px;">Gender</th><td><font style="font-size: 10px;text-align: center;">{a names1.gender a}</font></td><th style="font-size: 10px;text-align: center;padding: 3px;">Marital Status</th><td><font style="font-size: 10px;text-align: right;">NO</font></td></tr>
+      <tr><th style="width: 20%!important;font-size: 10px;text-align: left;">Date of Birth</th><td><font style="font-size: 10px;">{a names1.dob a}</font></td><th style="font-size: 10px;text-align: center;padding: 3px;">Religion</th><td><font style="font-size: 10px;text-align: right;">{a names1.religion a}</font></td></tr>
+      <tr><th style="width: 21%!important;font-size: 10px;text-align: left;">Blood Group</th><td><font style="font-size: 10px;">O+</font></td><th style="font-size: 10px;text-align: center;padding: 3px;">Community</th><td><font style="font-size: 10px;text-align: right;">{a names1.community a}</font></td></tr>
+        <tr><th style="width: 10px;font-size: 10px;text-align: left;">Age</th><td><font style="font-size: 10px;">21</font></td><th style="font-size: 10px;text-align: center;padding: 3px;">Caste</th><td><font style="font-size: 10px;text-align: right;">{a names1.caste_name a}</font></td></tr>
+    </table>
+    <h5>Academic Details</h5><hr>
+    <table style="width: 100%;" cellpadding="5">
+      <tr><th style="text-align: left;width: 10px;padding: 3px;font-size: 10px;">Status</th><td><font style="font-size: 10px;text-align: center;">{a names1. a}</font></td><th style="font-size: 10px;text-align: center;padding: 3px;">Ug Degree</th><td><font style="font-size: 10px;text-align: right;">NO</font></td></tr>
+      <tr><th style="width: 20%!important;font-size: 10px;text-align: left;">Batch</th><td><font style="font-size: 10px;">{a names1.aca_year a}</font></td><th style="font-size: 10px;text-align: center;padding: 3px;">UG Yop</th><td><font style="font-size: 10px;text-align: right;">{a names1. a}</font></td></tr>
+      <tr><th style="width: 21%!important;font-size: 10px;text-align: left;">Type</th><td><font style="font-size: 10px;">O+</font></td><th style="font-size: 10px;text-align: center;padding: 3px;">UG(%)</th><td><font style="font-size: 10px;text-align: right;">{a names1. a}</font></td></tr>
+        <tr><th style="width: 10px;font-size: 10px;text-align: left;">Date of Join</th><td><font style="font-size: 10px;">{a names1.doj a}</font></td><th style="font-size: 10px;text-align: center;padding: 3px;">HSC Group</th><td><font style="font-size: 10px;text-align: right;">{a names1. a}</font></td></tr>
+
+    </table>
+    <h5>Faculty Details</h5><hr>
+       <table style="width: 100%;" cellpadding="5">
+      <tr><th style="text-align: left;width: 10px;padding: 3px;font-size: 10px;">Advisor</th><td><font style="font-size: 10px;text-align: center;">{a names1. a}</font></td></tr>
+      <tr><th style="font-size: 10px;text-align: left;">Tutor</th><td><font style="font-size: 10px;">{a names1. a}</font></td></tr>
+      <tr><th style="font-size: 10px;text-align: left;">HOD</th><td><font style="font-size: 10px;">kanimozhi</font></td></tr>
+    </table>
+    <h5>Accomodation Details</h5><hr>
+      <table style="width: 100%;" cellpadding="5">
+      <tr><th style="text-align: left;width: 10px;padding: 3px;font-size: 10px;">Staying In</th><td><font style="font-size: 10px;text-align: center;">{a names1. a}</font></td><th style="font-size: 10px;text-align: center;padding: 3px;">Hostel</th><td><font style="font-size: 10px;text-align: right;">-</font></td></tr>
+      <tr><th style="width: 20%!important;font-size: 10px;text-align: left;">Transport</th><td><font style="font-size: 10px;">{a names1. a}</font></td><th style="font-size: 10px;text-align: center;padding: 3px;">Room No</th><td><font style="font-size: 10px;text-align: right;">-</font></td></tr>
+      <tr><th style="width: 21%!important;font-size: 10px;text-align: left;">Bus No</th><td><font style="font-size: 10px;">-</font></td></tr>
+       <tr><th style="width: 21%!important;font-size: 10px;text-align: left;">Bus Stop</th><td><font style="font-size: 10px;">-</font></td></tr>
+    </table>
+    <h5>Contact Details</h5><hr>
+         <table style="width: 100%;" cellpadding="5">
+      <tr><th style="font-size: 10px;">Father</th><td style="font-size: 10px;">{a names1.Father a}</td></tr>
+      <tr><th style="font-size: 10px;">Mother</th><td style="font-size: 10px;">{a names1.Mother a}</td></tr>
+      <tr><th style="font-size: 10px;">Contact</th><td style="font-size: 10px;">{a names1.Father a}(Father)</td></tr>
+      <tr><th style="font-size: 10px;">Contact No</th><td style="font-size: 10px;">{a names1.mobile a}</td></tr>
+      <tr><th style="font-size: 10px;">E-mail</th><td style="font-size: 10px;">{a names1.email a}</td></tr>
+      <tr><th style="font-size: 10px;">Other No</th><td style="font-size: 10px;">-</td></tr>
+      <tr><th style="font-size: 10px;">Address</th><td style="font-size: 10px;">{a names1.add1 a}</td></tr>
+    </table>
+    <h5>Account Details</h5><hr>
+    <table style="width: 100%;" cellpadding="5">
+      <tr><th style="font-size: 10px;">Bank</th><td style="font-size: 10px;">{a names1. a}</td><th style="font-size: 10px;text-align: center;">PF No</th><td style="font-size: 10px;">{a names1. a}-</td></tr>
+      <tr><th style="font-size: 10px;">Branch</th><td>{a names1. a}</td><th style="font-size: 10px;text-align: center;">PAN No</th><td style="font-size: 10px;">{a names1. a}-</td></tr>
+      <tr><th style="font-size: 10px;">IFSC Code</th><td style="font-size: 10px;">{a names1. a}</td><th style="font-size: 10px;text-align: center;">Aadhar No</th><td style="font-size: 10px;">{a names1. a}-</td></tr>
+      <tr><th style="font-size: 10px;">Account No</th><td style="font-size: 10px;">{a names1. a}</td><th style="font-size: 10px;text-align: center;">Passport No</th><td style="font-size: 10px;">{a names1. a}-</td></tr>
+    </table>
+  </div>
+  <div class="mdl-tabs__panel" id="attnd">
+  	<style type="text/css">
+  		.alt td{text-align: center;}
+  	</style><p></p>
+ 	<table class="alt" style="width: 100%;">
+    <tr><th style="background-color: #8bc34a;text-align: center;color: #fff">Hours Conducted</th><th style="background-color: #ce93d8;text-align: center;color: #fff">Hours Present</th><th style="text-align: center;background-color: #ff8a80;color: #fff">Hours Absent</th><th style="text-align: center;background-color: #90caf9;color: #fff">Attendence%</th></tr><tr><td style="background-color: #dcedc8;">{a atcount a}</td><td style="background-color: #f3e5f5;">{a pre a}</td><td style="background-color: #ffcdd2;">{a abs a}</td><td style="background-color: #e3f2fd;"></td></tr></table><p></p>
+<style type="text/css">
+  		.tabbor th{border: 1px solid #ddd;text-align: center;}
+  		.tabbor td{border: 1px solid #ddd;text-align: center;}
+  	</style><div class="table-responsive"><form action="" method="post">
+      	<table class="tabbor" style="width: 100%"><tr>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">Day</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">Date</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">1</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">2</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">3</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">4</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">5</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">6</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">7</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">8</th></tr>
+      	<tr><td><input style="width: 50px" type="text" ng-model="day"></td><td style="text-align: left;">Auto</td><td><select ng-model="p1" value="P"><option>P</option><option>A</option></select></td><td><select ng-model="p2" value="P"><option>P</option><option>A</option></select></td><td><select ng-model="p3" value="P"><option>P</option><option>A</option></select></td><td><select ng-model="p4" value="P"><option>P</option><option>A</option></select></td><td><select ng-model="p5" value="P"><option>P</option><option>A</option></select></td><td><select ng-model="p6" value="P"><option>P</option><option>A</option></select></td><td><select ng-model="p7" value="P"><option>P</option><option>A</option></select></td><td><select ng-model="p8" value="P"><option>P</option><option>A</option></select></td></tr>
+      </table><button type="submit" class="btn btn-simple btn-primary btn-lg" ng-click="adds(day,names1.id,names1.dept,names1.aca_year,names1.dep_semester,names1.sec,p1,p2,p3,p4,p5,p6,p7,p8); addtext();">Add</button></form></div>
+ 
+ <div class="table-responsive">
+      	<table class="tabbor" style="width: 100%"><tr>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">Day</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">Date</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">1</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">2</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">3</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">4</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">5</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">6</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">7</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">8</th></tr>
+      	<tr ng-repeat="attend in attend"><td ng-bind="attend.day"></td><td ng-bind="attend.date | date: 'dd-MM-yyyy'"></td><td ng-bind="attend.period"></td></tr>
+      	<tr ng-repeat="d in d"><td ng-bind="d[0]"></td><td ng-bind="d[1] | date: 'dd-MM-yyyy'"></td><td ng-bind="d[2]"></td><td ng-bind="d[3]"></td><td ng-bind="d[4]"></td><td ng-bind="d[5]"></td><td ng-bind="d[6]"></td><td ng-bind="d[7]"></td><td ng-bind="d[8]"></td><td ng-bind="d[9]"></td></tr>
+      </table></div>
+   <hr>
+  </div>
+  <div class="mdl-tabs__panel" id="tests">
+   <p></p>
+<table class="mtab" style="width: 100%">
+  <tr><th style="background-color: #8bc34a;color: #fff;text-align: center;">Total Tests</th><th style="text-align: center;background-color: #ce93d8;color: #fff">Tests Passed</th><th style="text-align: center;background-color: #ff8a80;color: #fff">Tests Failed</th><th style="text-align: center;background-color: #90caf9;color: #fff">Tests Absent</th></tr>
+  <tr><td style="background-color: #dcedc8;">{a tcount a}</td><td style="background-color: #f3e5f5;">{a pass a}</td><td style="background-color: #ffcdd2;">{a fail a}</td><td style="background-color: #e3f2fd;">{a tabs a}</td></tr></table>
+  <div ng-repeat="tt in test_view"><h5 ng-bind="tt.testtype"></h5><hr>
+    <table class="" style="width: 100%">
+    <tr><th>SUBJECT</th><th>MARKS</th></tr>
+    <tr><td>{a tt.subject a}</td><td ng-if="49 < tt.marks ">{a tt.marks a}</td> <td ng-if="tt.marks < 50">{a tt.marks a} FAIL</td></tr>  
+</table>
+  </div>
+  </div>
+  <div class="mdl-tabs__panel" id="univ">  <p></p>
+   <table class="mtab" style="width: 100%"><tr><th style="text-align: center;background-color: #8bc34a;color: #fff">Exams Conducted</th><th style="text-align: center;background-color: #ce93d8;color: #fff">Total Passed</th><th style="text-align: center;background-color: #ff8a80;color: #fff">Total Arrears</th><th style="text-align: center;background-color: #90caf9;color: #fff">Final C.G.P.A</th></tr><tr><td style="background-color: #dcedc8;">15</td><td style="background-color: #f3e5f5;">7</td><td style="background-color: #ffcdd2;">6</td><td style="background-color: #e3f2fd;">2</td></tr></table><table style="width: 100%"><tr><td style="font-size: 14px;font-weight: bold;">Current Semester</td><td style="text-align: right;">{a names1.dept a} {a names1.sec a}</td></tr></table>
+   <hr>
+   <div class="table-responsive"><form action="" method="post">
+        <table class="tabbor" style="width: 100%"><tr>
+              <th style="text-align: center;font-size: 12px;font-weight: bold;">Subject code</th>
+        <th style="text-align: center;font-size: 12px;font-weight: bold;">Subject</th>
+        <th style="text-align: center;font-size: 12px;font-weight: bold;">Grade</th>
+        <th style="text-align: center;font-size: 12px;font-weight: bold;">Status</th></tr>
+        <tr><td><input type="text" ng-model="subcode"></td><td><input type="text" ng-model="sub"></td><td><select ng-model="grade"><option value="S">S</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="U">U</option></select></td><td><select ng-if="grade == 'S' || grade == 'A' || grade == 'B' || grade == 'C' || grade == 'D' || grade == 'E'"><option>PASS</option></select><select ng-if="grade == 'U'"><option>FAIL</option></select></td></tr>
+      </table><button type="submit" class="btn btn-simple btn-primary btn-lg" ng-click="univadds(names1.id,names1.aca_year,names1.dept,names1.dep_semester,names1.sec,subcode,sub,grade);">Add</button></form></div><hr>
+
+   <table class="tabbor" style="width: 100%"><tr>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">Subject code</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">Subject</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">Grade</th>
+      	<th style="text-align: center;font-size: 12px;font-weight: bold;">Status</th>
+      	</tr>
+ <tr ng-repeat="uu in ss"><td ng-bind="uu.scode"></td><td ng-bind="uu.subject"></td><td ng-bind="uu.grade"></td><td><div ng-if="uu.grade=='U'">Fail</div><div ng-if="uu.grade=='S' || uu.grade=='A' || uu.grade=='B' || uu.grade=='C' || uu.grade=='D' || uu.grade=='E'">Pass</div></td></tr>
+
+      </table>
+  </div>
+</div>
+<!-- tabs end -->
+      </div>
+      <div class="modal-footer">
+        <button type="button"  ng-click="reload()" class="btn btn-info btn-simple" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+    	<div class="navbar-header">
+    		<a class="navbar-brand" href=""><i class="material-icons">arrow_back</i></a>
+    		<a class="navbar-brand">Students</a>
+<a class="col-sm-3 input-group navbar-right">
+	
+		<input type="text" style="color: #fff;" class="form-control" placeholder="Search..." ng-model="search">
+			<span class="input-group-addon">
+			<i style="color: #fff" class="material-icons">search</i>
+		</span> 
+	</a>    	</div>
+
+    	
+	</div>
+</nav><center>
+<table class="tabl">
+	<style type="text/css">
+		.tabl>tbody>tr{border: 2px solid #ddd!important;}
+		.tabl>tbody>tr:nth-child(even) {background: #e3f2fd!important}
+		.tabl>tbody>tr>td{padding: 10px!important;}
+	</style>
+    <tbody>
+        <tr ng-repeat="d in names | filter:search">
+            <td class="text-center"><img width="60" height="60" src="static/img/test.jpg"></td>
+    <td class="text-center" data-toggle="modal" data-target="#myModal" ng-click="view(d.id,$index); attendview(d.id); univview(d.id); testview(d.id); "><span style="font-weight: bold;">{a d.Name a}</span><br>{a d.regist a}<br>{a d.dept a}</td>
+            
+            
+        </tr>
+
+    </tbody>
+
+</table></center>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js">
+</script>
+<script>
+var uid = 1;
+var app = angular.module('myApp', []);
+   app.controller('customersCtrl', function($scope, $http,$location,$window) {
+
+$scope.add=true;
+$scope.update=true;
+
+$http.get("/student_view.json")
+.success(function (data) {
+  
+    $scope.sam=[];
+    // var na = (JSON.stringify(data));
+  $scope.names = data;
+  // $scope.sam.push(na);
+});
+
+$scope.adds=function adds(day,id,dept,batch,sem,sec,p1,p2,p3,p4,p5,p6,p7,p8) {
+
+var datas={"day":day,"id":id,"dept":dept,"batch":batch,"sem":sem,"sec":sec,"p1":p1,"p2":p2,"p3":p3,"p4":p4,"p5":p5,"p6":p6,"p7":p7,"p8":p8};
+$http.post("/addattend",datas).success(function (adds) {
+$scope.name=adds;
+alert(adds);
+ });
+
+}
+$scope.addtext = function () {
+	$scope.d=[];
+	$scope.date = new Date();
+	var i = ([$scope.day,$scope.date,$scope.p1,$scope.p2,$scope.p3,$scope.p4,$scope.p5,$scope.p6,$scope.p7,$scope.p8]);
+	$scope.d.push(i);
+	location.reload();
+}
+$scope.univview = function(Id){
+$http.get("/viewuniversity.json/" + Id)
+.success(function (data) {
+  
+    $scope.ss = data;
+    // location.reload();
+  // $scope.attend = data;
+  // $scope.s.push(attend);
+});
+}
+$scope.pass=0;
+$scope.fail=0;
+$scope.tcount=0;
+$scope.testview = function(Id){
+$http.get("/testview.json/" + Id)
+.success(function (data) {
+  
+    $scope.test_view = data;
+    $scope.tcount+=1;
+    for (var i = 0; i <  $scope.test_view.length; i++) {
+      if ($scope.test_view[i].marks>=50) {
+        $scope.pass+=1;
+      }
+      else{
+        $scope.fail+=1;
+      }
+    }
+    // alert($scope.test_view[0]['testtype']);
+});
+}
+$scope.univadds=function(id,batch,dept,sem,sec,scode,sub,grade) {
+
+var univdatas={"id":id,"batch":batch,"dept":dept,"sem":sem,"sec":sec,"scode":scode,"sub":sub,"grade":grade};
+$http.post("/adduniv",univdatas).success(function (adds) {
+$scope.univ=adds;
+alert(adds);
+location.reload();
+ });
+}
+$scope.univadd = function () {
+  $scope.u=[];
+  $scope.date = new Date();
+  var i = ([$scope.subcode,$scope.sub,$scope.grade,$scope.status]);
+  $scope.u.push(i);
+  // location.reload();
+}
+$scope.pre=0;
+$scope.abs=0;
+$scope.atcount=0;
+$scope.attendview = function(Id){
+$http.get("/viewattedence.json/" + Id)
+.success(function (data) {
+    $scope.s=[];
+  $scope.attend = data;
+ 
+  for (var i = 0; i < $scope.attend.length; i++) {
+     $scope.atcount+=1;
+    if ($scope.attend[i].period=='P') {
+      $scope.pre+=1;
+
+    }
+    else{
+      $scope.abs+=1;
+    }
+  
+  }
+
+  $scope.s.push(attend);
+});
+}
+    
+$scope.reload = function reload() {
+  $window.location.reload();
+}
+
+
+$scope.view = function view(id,index) {
+      $scope.names1 = angular.copy($scope.names[index]);
+}
+
+
+    });
+   app.config(['$interpolateProvider', function($interpolateProvider) {
+  $interpolateProvider.startSymbol('{a');
+  $interpolateProvider.endSymbol('a}');
+}]);
+
+
+</script>
+</body>
+	<!--   Core JS Files   -->
+	<script src="../static/js/jquery.min.js" type="text/javascript"></script>
+	<script src="../static/js/bootstrap.min.js" type="text/javascript"></script>
+	<script defer type="text/javascript" src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+</html>

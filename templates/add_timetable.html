@@ -1,0 +1,662 @@
+	<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="../static/img/apple-icon.png" />
+	<link rel="icon" type="image/png" href="../static/img/favicon.png" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Dashboard by infoget Team</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!--  Material Dashboard CSS    -->
+    <link href="../static/css/material-dashboard.css" rel="stylesheet"/>
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="../static/css/demo.css" rel="stylesheet" />
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+   
+	
+</head>
+<style> 
+input{
+    width: 70px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position:absolute; 
+    padding: 10px 5px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+</style>
+
+<body ng-controller="customersCtrl">
+<div class="wraper">
+
+	    <div class="sidebar" data-color="purple" data-image="../static/img/sidebar-1.jpg">		
+
+			<div class="logo">
+				<a href="#" class="simple-text">
+					Infoget Team
+				</a>
+			</div>
+
+	    	<div class="sidebar-wrapper">
+	            <ul class="nav">
+	                  <li>
+                        <a href="/dashboard">
+                            <i class="material-icons"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="#">
+                            <i class="material-icons"></i>
+                            <p>TIME TABLE</p>
+                        </a>
+                    </li>
+                    
+                    <li>{% if access in list1 %}
+                        <a href="/add_subject">
+                            <i class="material-icons"></i>
+                            <p>ADD Subjects</p>
+                        </a>
+                    </li>{% endif %}
+					
+	            </ul>
+	    	</div>
+	    </div>
+
+	    <div class="main-panel">
+			<nav class="navbar navbar-transparent navbar-absolute">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">IFET Dashboard</a>
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<a href="#/!" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="material-icons">dashboard</i>
+									<p class="hidden-lg hidden-md">Dashboard</p>
+								</a>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="material-icons">notifications</i>
+									<span class="notification">5</span>
+									<p class="hidden-lg hidden-md">Notifications</p>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Mike John responded to your email</a></li>
+									<li><a href="#">You have 5 new tasks</a></li>
+									<li><a href="#">You're now friend with Andrew</a></li>
+									<li><a href="#">Another Notification</a></li>
+									<li><a href="#">Another One</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="/user" class="dropdown-toggle" data-toggle="dropdown">{{data}}
+	 							   <i class="material-icons">person</i>
+	 							   <p class="hidden-lg hidden-md">Profile</p>
+		 						</a>
+							</li>
+             <li>
+                                <a href="/logout">
+                                   <i class="fa fa-sign-in"></i>
+                                   <p class="hidden-lg hidden-md">LogOut</p>
+                                </a>
+                            </li>
+						</ul>
+
+						<form class="navbar-form navbar-right" role="search">
+							<div class="form-group  is-empty">
+								<input type="text" class="form-control" placeholder="Search">
+								<span class="material-input"></span>
+							</div>
+							<button type="submit" class="btn btn-white btn-round btn-just-icon">
+								<i class="material-icons">search</i><div class="ripple-container"></div>
+							</button>
+						</form>
+					</div>
+				</div>
+			</nav>
+				      <div class="content">
+
+	            <div class="container-fluid">
+<!-- start first table -->
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="card">
+                            
+                              <div class="card-header" data-background-color="purple">
+                                  <h4 class="title">MASTER TIME TABLE</h4>
+                  <p class="category">{{dept}} -{{sem}}th semester</p>
+                              </div>
+
+
+                              <div class="card-content">
+                  <datalist id="list" type="text" separator=",">
+                    {% for subject in subjects %}
+                    <option value="{{subject[1]}}"></option>
+                      {% endfor %}
+                  </datalist>
+                   <datalist id="list1" type="text" separator=",">
+                     {% for subject in subjects %}
+                   <option value="{{subject[1]}}"></option>
+                     {% endfor %}
+                   </datalist>
+                                    {% if not val1 %}
+
+                                    <h3>TILL TIMETABLE IS NOT UPDATED</h3>
+                                    {% else %}
+                  <div class="row">
+                <div class="col-md-12">
+                
+                            <div class="table-responsive">
+                            <!-- {% for val in val1 %} -->
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+
+                                        <tr>
+                                            <td align="center"></td>
+                                            <td align="center"><b>9:25-10:15</b></td>
+                                            <td align="center" ><b>10:15-11:05</b></td>
+                                            <td rowspan="7"align="center"><b>B<br>R<br>E<br>A<br>K</b></td>
+                                            <td align="center"><b>11:15-12:05</b></td>
+                                            <td align="center"><b>12:05-12:55</b></td>
+                                             <td rowspan="7"align="center"><b>L<br>U<br>N<br>C<br>H</b></td>
+                                            <td align="center"><b>1:40-2:30</b></td>   
+                                            <td align="center"><b>2:30-3:20</b></td>
+                                             <td rowspan="7"align="center"><b>B<br>R<br>E<br>A<br>K</b> </td>
+                                            <td align="center" ><b>3:30-4:20</b></td>
+                                            <td align="center" ><b>4:20-5:05</b></td>
+                                        </tr>
+                                    
+                                           
+                                        <tr class="odd gradeX">
+                                        
+                                            <td align="center" width="7%">DAY1</td>
+                                                      <td align="center">{{val[4]}}</td> 
+                                                      <td align="center">{{val[5]}}</td>
+                                                      <td align="center">{{val[6]}}</td>
+                                                      <td align="center">{{val[7]}}</td>
+                                                      <td align="center">{{val[8]}}</td>
+                                                      <td align="center">{{val[9]}}</td>
+                                                      <td align="center">{{val[10]}}</td>
+                                                      <td align="center">{{val[11]}}</td>
+
+
+                                        </tr>
+                                        <td align="center" width="7%">DAY2</td>
+
+                                                      <td align="center">{{val[12]}}</td> 
+                                                      <td align="center">{{val[13]}}</td>
+                                                      <td align="center">{{val[14]}}</td>
+                                                      <td align="center">{{val[15]}}</td>
+                                                      <td align="center">{{val[16]}}</td>
+                                                      <td align="center">{{val[17]}}</td>
+                                                      <td align="center">{{val[18]}}</td>
+                                                      <td align="center">{{val[19]}}</td>
+                                                      
+
+                                        </tr>
+                                        <td align="center" width="7%">DAY3</td>
+
+
+                                                      <td align="center">{{val[20]}}</td>
+                                                      <td align="center">{{val[21]}}</td>
+                                                      <td align="center">{{val[22]}}</td>
+                                                      <td align="center">{{val[23]}}</td>
+                                                      <td align="center">{{val[24]}}</td>
+                                                      <td align="center">{{val[25]}}</td>
+                                                      <td align="center">{{val[26]}}</td>
+                                                      <td align="center">{{val[27]}}</td>
+                                                      
+
+                                        </tr>
+                                        <td align="center" width="7%">DAY4</td>
+
+
+                                                      <td align="center">{{val[28]}}</td>
+                                                      <td align="center">{{val[29]}}</td>
+                                                      <td align="center">{{val[30]}}</td>
+                                                      <td align="center">{{val[31]}}</td>
+                                                      <td align="center">{{val[32]}}</td>
+                                                      <td align="center">{{val[33]}}</td>
+                                                      <td align="center">{{val[34]}}</td>
+                                                      <td align="center">{{val[35]}}</td>
+                                                      
+
+                                        </tr>
+                                        <td align="center" width="7%">DAY5</td>
+
+
+                                                      <td align="center">{{val[36]}}</td>
+                                                      <td align="center">{{val[37]}}</td>
+                                                      <td align="center">{{val[38]}}</td>
+                                                      <td align="center">{{val[39]}}</td>
+                                                      <td align="center">{{val[40]}}</td>
+                                                      <td align="center">{{val[41]}}</td>
+                                                      <td align="center">{{val[42]}}</td>
+                                                      <td align="center">{{val[43]}}</td>
+                                                      
+
+                                        </tr><td align="center" width="7%">DAY6</td>
+
+
+                                                      <td align="center"> {{val[44]}}</td>
+                                                      <td align="center"> {{val[45]}}</td>
+                                                      <td align="center"> {{val[46]}}</td>
+                                                      <td align="center"> {{val[47]}}</td>
+                                                      <td align="center"> {{val[48]}}</td>
+                                                      <td align="center"> {{val[49]}}</td>
+                                                      <td align="center">{{val[50]}}</td>
+                                                      <td align="center">{{val[51]}}</td>
+                                                      
+
+                                        </tr>
+                                         
+
+                                        
+                                   
+                                </table>
+                             
+                            <!-- {% endfor %} -->
+                         </div>
+                            
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+{% endif %}
+
+
+
+
+             </div>
+
+      
+                        
+
+            </div>
+          </div>
+<!-- end first table -->
+
+
+                <!-- Start -->
+	                <div class="row">
+	                    <div class="col-md-12">
+	                        <div class="card">
+	                        	
+	                            <div class="card-header" data-background-color="purple">
+	                                <h4 class="title">TIME TABLE</h4>
+									<p class="category">{{dept}} -{{sem}}th semester</p>
+	                            </div>
+
+
+	                            <div class="card-content">
+									<datalist id="list" type="text" separator=",">
+										{% for subject in subjects %}
+										<option value="{{subject[1]}}"></option>
+									    {% endfor %}
+									</datalist>
+                   <datalist id="list1" type="text" separator=",">
+                     {% for subject in subjects %}
+                   <option value="{{subject[1]}}"></option>
+                     {% endfor %}
+                   </datalist>
+                                    {% if not val1 %}
+
+                                    <h3>TILL TIMETABLE IS NOT UPDATED</h3>
+                                    {% else %}
+									<div class="row">
+                <div class="col-md-12">
+                
+                            <div class="table-responsive">
+                            <!-- {% for val in val1 %} -->
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+
+                                        <tr>
+                                            <td align="center"></td>
+                                            <td align="center"><b>9:25-10:15</b></td>
+                                            <td align="center" ><b>10:15-11:05</b></td>
+                                            <td rowspan="7"align="center"><b>B<br>R<br>E<br>A<br>K</b></td>
+                                            <td align="center"><b>11:15-12:05</b></td>
+                                            <td align="center"><b>12:05-12:55</b></td>
+                                             <td rowspan="7"align="center"><b>L<br>U<br>N<br>C<br>H</b></td>
+                                            <td align="center"><b>1:40-2:30</b></td>   
+                                            <td align="center"><b>2:30-3:20</b></td>
+                                             <td rowspan="7"align="center"><b>B<br>R<br>E<br>A<br>K</b> </td>
+                                            <td align="center" ><b>3:30-4:20</b></td>
+                                            <td align="center" ><b>4:20-5:05</b></td>
+                                        </tr>
+                                    
+                                           
+                                        <tr class="odd gradeX">
+                                        
+                                            <td align="center" width="7%">DAY1</td>
+                                                      <td align="center">{% if sub == val[4] %} {{val[4]}} {% endif %} </td> 
+                                                      <td align="center">{% if sub == val[5] %} {{val[5]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[6] %} {{val[6]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[7] %} {{val[7]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[8] %} {{val[8]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[9] %} {{val[9]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[10] %} {{val[10]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[11] %} {{val[11]}} {% endif %}</td>
+
+
+                                        </tr>
+                                        <td align="center" width="7%">DAY2</td>
+
+                                                      <td align="center">{% if sub == val[12] %} {{val[12]}} {% endif %} </td> 
+                                                      <td align="center">{% if sub == val[13] %} {{val[13]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[14] %} {{val[14]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[15] %} {{val[15]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[16] %} {{val[16]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[17] %} {{val[17]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[18] %} {{val[18]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[19] %} {{val[19]}} {% endif %}</td>
+                                                      
+
+                                        </tr>
+                                        <td align="center" width="7%">DAY3</td>
+
+
+                                                      <td align="center">{% if sub == val[20] %} {{val[20]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[21] %} {{val[21]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[22] %} {{val[22]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[23] %} {{val[23]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[24] %} {{val[24]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[25] %} {{val[25]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[26] %} {{val[26]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[27] %} {{val[27]}} {% endif %}</td>
+                                                      
+
+                                        </tr>
+                                        <td align="center" width="7%">DAY4</td>
+
+
+                                                      <td align="center">{% if sub == val[28] %} {{val[28]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[29] %} {{val[29]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[30] %} {{val[30]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[31] %} {{val[31]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[32] %} {{val[32]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[33] %} {{val[33]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[34] %} {{val[34]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[35] %} {{val[35]}} {% endif %}</td>
+                                                      
+
+                                        </tr>
+                                        <td align="center" width="7%">DAY5</td>
+
+
+                                                      <td align="center">{% if sub == val[36] %} {{val[36]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[37] %} {{val[37]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[38] %} {{val[38]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[39] %} {{val[39]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[40] %} {{val[40]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[41] %} {{val[41]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[42] %} {{val[42]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[43] %} {{val[43]}} {% endif %}</td>
+                                                      
+
+                                        </tr><td align="center" width="7%">DAY6</td>
+
+
+                                                      <td align="center">{% if sub == val[44] %} {{val[44]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[45] %} {{val[45]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[46] %} {{val[46]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[47] %} {{val[47]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[48] %} {{val[48]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[49] %} {{val[49]}} {% endif %}</td>
+                                                      <td align="center">{% if sub == val[50] %}{{val[50]}}{% endif %}</td>
+                                                      <td align="center">{% if sub == val[51] %}{{val[51]}}{% endif %}</td>
+                                                      
+
+                                        </tr>
+                                         
+
+                                        
+                                   
+                                </table>
+                             
+                            <!-- {% endfor %} -->
+                            </div>
+                            
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+{% endif %}
+
+
+
+
+ 						 </div>
+
+			
+	                      
+
+						</div>
+					</div>
+				</div>
+        <!-- end -->
+</div>
+</div>
+                {% if val1 %}
+                <form action="/delete_timetable">
+                    <button class="btn btn-primary">delete the time table</button></form>
+                    {% endif %}
+
+
+<div class="row">
+	                    <div class="col-md-12">
+	                        <div class="card">
+	                        	
+	                            <div class="card-header" data-background-color="purple">
+	                                <h4 class="title"> edit TIME TABLE</h4>
+									<p class="category">Edit or update the time table of {{dept}} -{{sem}}th semister</p>
+	                            </div>
+	                            <div class="card-content">
+
+            <div class="row">
+                <div class="col-md-12">
+                            <div class="table-responsive">
+                            	<!-- <form action="/update_timetable" method="POST"> -->
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+
+                                    <thead>
+                                        <tr>
+                                            <td align="center"></td>
+                                            <td align="center"><b>9:25-10:15</b></td>
+                                            <td align="center" ><b>10:15-11:05</b></td>
+                                            <td align="center"><b>11:05-11:15</b></td>
+                                            <td align="center"><b>11:15-12:05</b></td>
+                                            <td align="center"><b>12:05-12:55</b></td>
+                                            <td align="center"><b>12:55-1:40</b></td>
+                                            <td align="center"><b>1:40-2:30</b></td>   
+                                            <td align="center"><b>2:30-3:20</b></td>
+                                            <td align="center"><b>3:20-3:30</b></td>
+                                            <td align="center" ><b>3:30-4:20</b></td>
+                                            <td align="center" ><b>4:20-5:05</b></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <tr class="odd gradeX">
+<td align="center" width="7%">DAY1</td>
+<td align="center"><input  list="list" type="text" ng-model="period11" ng-bind="data.period11" /></td>
+ <td align="center"><input  list="list" type="text" ng-model="period12" ng-bind="data.period12" /></td>
+<td rowspan="6"align="center"><b>B<br>R<br>E<br>A<br>K</b></td>
+ <td align="center"><input  list="list" type="text" ng-model="period13" ng-bind="data.period13" /></td>
+ <td align="center"><input  list="list" type="text" ng-model="period14" ng-bind="data.period14" /></td>
+<td rowspan="6"align="center"><b>B<br>R<br>E<br>A<br>K</b></td>
+ <td align="center"><input  list="list" type="text" ng-model="period15" ng-bind="data.period15" /></td>
+ <td align="center"><input  list="list" type="text" ng-model="period16" ng-bind="data.period16" /></td>
+<td rowspan="6"align="center"><b>B<br>R<br>E<br>A<br>K</b></td>
+ <td align="center"><input  list="list" type="text" ng-model="period17" ng-bind="data.period17" /></td>
+ <td align="center"><input  list="list" type="text" ng-model="period18" ng-bind="data.period18" /></td>
+                                            </tr>
+<tr class="odd gradeX"><td align="center" width="7%">DAY2</td>
+    <td align="center"><input  list="list" type="text" ng-model="period21" ng-bind="data.period21" /></td>
+    <td align="center"><input  list="list" type="text" ng-model="period22" ng-bind="data.period22" /></td>
+    <td align="center"><input  list="list" type="text" ng-model="period23" ng-bind="data.period23" /></td>
+    <td align="center"><input  list="list" type="text" ng-model="period24" ng-bind="data.period24" /></td>
+    <td align="center"><input  list="list" type="text" ng-model="period25" ng-bind="data.period25" /></td>
+    <td align="center"><input  list="list" type="text" ng-model="period26" ng-bind="data.period26" /></td>
+    <td align="center"><input  list="list" type="text" ng-model="period27" ng-bind="data.period27" /></td>
+    <td align="center"><input  list="list" type="text" ng-model="period28" ng-bind="data.period28" /></td>
+ </tr>
+    <tr class="odd gradeX">
+        <td align="center" width="7%">DAY3</td><td align="center"><input  list="list" type="text" ng-model="period31" ng-bind="data.period31" /></td><td align="center"><input  list="list" type="text" ng-model="period32" ng-bind="data.period32" /></td><td align="center"><input  list="list" type="text" ng-model="period33" ng-bind="data.period33" /></td><td align="center"><input  list="list" type="text" ng-model="period34" ng-bind="data.period34" /></td><td align="center"><input  list="list" type="text" ng-model="period35" ng-bind="data.period35" /></td><td align="center"><input  list="list" type="text" ng-model="period36" ng-bind="data.period36" /></td><td align="center"><input  list="list" type="text" ng-model="period37" ng-bind="data.period37" /></td><td align="center"><input  list="list" type="text" ng-model="period38" ng-bind="data.period38" /></td></tr>
+        <tr class="odd gradeX">
+        <td align="center" width="7%">DAY4</td>
+        <td align="center"><input  list="list" type="text" ng-model="period41" ng-bind="data.period41" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period42" ng-bind="data.period42" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period43" ng-bind="data.period43" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period44" ng-bind="data.period44" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period45" ng-bind="data.period45" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period46" ng-bind="data.period46" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period47" ng-bind="data.period47" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period48" ng-bind="data.period48" /></td>
+        </tr><tr class="odd gradeX"><td align="center" width="7%">DAY5</td>
+        <td align="center"><input  list="list" type="text" ng-model="period51" ng-bind="data.period51" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period52" ng-bind="data.period52" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period53" ng-bind="data.period53" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period54" ng-bind="data.period54" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period55" ng-bind="data.period55" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period56" ng-bind="data.period56" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period57" ng-bind="data.period57" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period58" ng-bind="data.period58" /></td>
+        </tr><tr class="odd gradeX"><td align="center" width="7%">DAY6</td>
+        <td align="center"><input  list="list" type="text" ng-model="period61" ng-bind="data.period61" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period62" ng-bind="data.period62" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period63" ng-bind="data.period63" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period64" ng-bind="data.period64" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period65" ng-bind="data.period65" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period66" ng-bind="data.period66" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period67" ng-bind="data.period67" /></td>
+        <td align="center"><input  list="list" type="text" ng-model="period68" ng-bind="data.period68" /></td>
+        </tr>
+            
+                              
+                                    </tbody>
+                                </table>
+                                <button class="btn btn-primary" ng-click="new_add(period11,period12,period13,period14,period15,period16,period17,period18,period21,period22,period23,period24,period25,period26,period27,period28,period31,period32,period33,period34,period35,period36,period37,period38,period41,period42,period43,period44,period45,period46,period47,period48,period51,period52,period53,period54,period55,period56,period57,period58,period61,period62,period63,period64,period65,period66,period67,period68)" >update</button>
+                         
+                            </div>
+                            
+                 
+                </div>
+            </div>
+
+ 						 </div>
+
+			
+	                      
+
+						</div>
+					</div>
+				</div>
+
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js">
+</script>
+        <script>
+var uid = 1;
+var app = angular.module('myApp', []);
+   app.controller('customersCtrl', function($scope, $http) {
+
+$scope.add=true;
+$scope.update=true;
+
+$http.get("/subject_handler_json")
+.success(function (data) {
+
+
+  
+    $scope.samp={};
+  $scope.datas = data;
+
+});
+$scope.delete = function(deletingId, index){
+  
+
+$http.get("/subject_handler_delete/" + deletingId)
+    .success(function(data){
+        $scope.datas.splice(index, 1);
+    })
+    alert(data)
+    }
+
+$scope.view = function view(id,index) {
+      $scope.names1 = angular.copy($scope.names[index]);
+}
+$scope.update=function update(id,subject_code,subject_name,sem){
+  // alert(Mobile+access_type);
+  var va={"id":id,"subject_code":subject_code,"subject_name":subject_name,"sem":sem};
+  $http.post("/update_subject",va).success(function (res) {
+    $scope.res=res;
+    alert(res);
+  });
+
+}
+$scope.new_add=function new_add(period11,period12,period13,period14,period15,period16,period17,period18,period21,period22,period23,period24,period25,period26,period27,period28,period31,period32,period33,period34,period35,period36,period37,period38,period41,period42,period43,period44,period45,period46,period47,period48,period51,period52,period53,period54,period55,period56,period57,period58,period61,period62,period63,period64,period65,period66,period67,period68){
+  // alert(period68);
+  var va={"period11":period11, "period12":period12, "period13":period13, "period14":period14, "period15":period15, "period16":period16, "period17":period17, "period18":period18, "period21":period21, "period22":period22, "period23":period23, "period24":period24, "period25":period25, "period26":period26, "period27":period27, "period28":period28, "period31":period31, "period32":period32, "period33":period33, "period34":period34, "period35":period35, "period36":period36, "period37":period37, "period38":period38, "period41":period41, "period42":period42, "period43":period43, "period44":period44, "period45":period45, "period46":period46, "period47":period47, "period48":period48, "period51":period51, "period52":period52, "period53":period53, "period54":period54, "period55":period55, "period56":period56, "period57":period57, "period58":period58, "period61":period61, "period62":period62, "period63":period63, "period64":period64, "period65":period65, "period66":period66, "period67":period67, "period68":period68};
+  $http.post("/add_new_timetable",va).success(function (res) {
+    $scope.res=res;
+    alert(res);
+  });
+
+}
+
+
+    });
+   app.config(['$interpolateProvider', function($interpolateProvider) {
+  $interpolateProvider.startSymbol('{a');
+  $interpolateProvider.endSymbol('a}');
+}]);
+
+
+</script>
+
+
+</body>
+
+	  <!--   Core JS Files   -->
+<script src="../static/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script src="../static/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../static/js/material.min.js" type="text/javascript"></script> 
+<script defer type="text/javascript" src="../static/js/material.min1.js"></script>
+
+<!--  Charts Plugin -->
+<script src="../static/js/chartist.min.js"></script>
+<!--  Dynamic Elements plugin -->
+<script src="../static/js/arrive.min.js"></script>
+<!--  PerfectScrollbar Library -->
+<script src="../static/js/perfect-scrollbar.jquery.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="../static/js/bootstrap-notify.js"></script>
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Material Dashboard javascript methods -->
+<script src="../static/js/material-dashboard.js?v=1.2.0"></script>
+<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+<script src="../static/js/demo.js"></script>
+
+</html>
